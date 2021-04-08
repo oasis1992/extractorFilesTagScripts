@@ -9,7 +9,7 @@
                                 var textNoResults = '';
 
                                 if (textNoResults != '') {
-                                    if ('22137' == 0) {
+                                    if ('22129' == 0) {
                                         $("#AjaxNoAdverts").html("Hoy no tenemos inmuebles que coincidan con su búsqueda de: <b>" + textNoResults + "</b>. Consulte nuestro listado para encontrar más inmuebles: <a href='/todos/venta/colombia/index.aspx?ad=30|1||||1||||||||||||||||||||||||||||||'>Anuncios de Finca Raíz en Colombia</a>");
                                         $("#AjaxNoAdverts").show();
                                     }

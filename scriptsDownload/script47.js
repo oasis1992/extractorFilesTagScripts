@@ -8,7 +8,7 @@
 
     var functionClickApple = function () {
         
-                window.location.href = 'https://appleid.apple.com/auth/authorize?scope=name%20email&client_id=web.co.com.fincaProd&redirect_uri=https://www.fincaraiz.com.co/apartamentos/arriendo/bogota&state=quu75ZYXBEm0vN0AUMhdCA&response_type=code&response_mode=form_post&approval_prompt=auto';                
+                window.location.href = 'https://appleid.apple.com/auth/authorize?scope=name%20email&client_id=web.co.com.fincaProd&redirect_uri=https://www.fincaraiz.com.co/apartamentos/arriendo/bogota&state=1V6DIj0HEWgO1AeKTsXCQ&response_type=code&response_mode=form_post&approval_prompt=auto';                
         
     }
 
