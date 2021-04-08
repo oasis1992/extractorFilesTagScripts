@@ -52,7 +52,10 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
     const wordArray = CryptoJS.enc.Utf8.parse(data)
     // this save in db
     const base64 = CryptoJS.enc.Base64.stringify(wordArray)
-    await saveFilePath(`./text.json`, base64)
+    const newData = {
+        data: base64,
+    }
+    await saveFilePath(`./text.json`, JSON.stringify(newData))
     // extract scripts
     const $ = cheerio.load(data)
  
