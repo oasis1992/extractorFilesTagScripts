@@ -42,7 +42,7 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 
   try {
     const browser = await puppeteer.launch();
-    const [page] = await browser.pages();
+    const page = await browser.newPage();
 
     await page.goto(URL, { waitUntil: 'networkidle0' })
     const data = await page.content();

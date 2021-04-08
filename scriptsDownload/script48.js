@@ -3,7 +3,7 @@
     var advertId = '';
     var vurl = '';
     var contractType = 'Particular_Comprador';
-    var registerUserToken = "11D8C67F8053C232FBE720ACE297E88BF490F55680A0A15D31205E0655B6E55172A3B738AF068BC9";
+    var registerUserToken = "538ECD8F2278A18E3538ABC6D81A997A907FE8C602BA9B965F539261F46441DEA42A0B0EAF74BCF3";
     var rclWidgetId = "";
     var dataUserRegister;
 
