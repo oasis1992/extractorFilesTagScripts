@@ -60,144 +60,118 @@ const URL = "https://www.fincaraiz.com.co/apartamentos/arriendo/bogota";
 		// extract scripts
 		const $ = cheerio.load(data);
 
-		// $("script")
-		// 	.get()
-		// 	.forEach(async (item, index) => {
-		// 		const src = item.attribs["src"];
-		// 		if (src) {
-		// 			try {
-		// 				await downloadFile(
-		// 					src,
-		// 					`./scriptsDownload/script${index}.js`,
-		// 				);
-		// 				return;
-		// 			} catch (e) {
-		// 				if (e === 302) {
-		// 					return;
-		// 				}
+		$("script")
+			.get()
+			.forEach(async (item, index) => {
+				const src = item.attribs["src"];
+				if (src) {
+					try {
+						await downloadFile(
+							src,
+							`./scriptsDownload/script${index}.js`,
+						);
+						return;
+					} catch (e) {
+						if (e === 302) {
+							return;
+						}
 
-		// 				if (src && e.code === "ERR_INVALID_URL") {
-		// 					if (/^\/\//.test(src)) {
-		// 						const newUrlWithOutSlashes = src.split("//")[1];
-		// 						const url = `https://${newUrlWithOutSlashes}`;
-		// 						try {
-		// 							await downloadFile(
-		// 								url,
-		// 								`./scriptsDownload/script${index}.js`,
-		// 							);
-		// 						} catch (e) {
-		// 							if (typeof e === "number") {
-		// 								console.log(
-		// 									`URL : ${url} with statusCode: ${e}`,
-		// 								);
-		// 								return;
-		// 							}
-		// 							console.log(e.message);
-		// 						}
-		// 						return;
-		// 					}
+						if (src && e.code === "ERR_INVALID_URL") {
+							if (/^\/\//.test(src)) {
+								const newUrlWithOutSlashes = src.split("//")[1];
+								const url = `https://${newUrlWithOutSlashes}`;
+								try {
+									await downloadFile(
+										url,
+										`./scriptsDownload/script${index}.js`,
+									);
+								} catch (e) {
+									if (typeof e === "number") {
+										console.log(
+											`URL : ${url} with statusCode: ${e}`,
+										);
+										return;
+									}
+									console.log(e.message);
+								}
+								return;
+							}
 
-		// 					if (/^\//.test(src)) {
-		// 						const url = `${URL}${src}`;
-		// 						try {
-		// 							await downloadFile(
-		// 								url,
-		// 								`./scriptsDownload/script${index}.js`,
-		// 							);
-		// 						} catch (e) {
-		// 							if (typeof e === "number") {
-		// 								console.log(
-		// 									`URL : ${url} with statusCode: ${e}`,
-		// 								);
-		// 								return;
-		// 							}
-		// 							console.log(e.message);
-		// 						}
+							if (/^\//.test(src)) {
+								const url = `${URL}${src}`;
+								try {
+									await downloadFile(
+										url,
+										`./scriptsDownload/script${index}.js`,
+									);
+								} catch (e) {
+									if (typeof e === "number") {
+										console.log(
+											`URL : ${url} with statusCode: ${e}`,
+										);
+										return;
+									}
+									console.log(e.message);
+								}
 
-		// 						return;
-		// 					}
-		// 				}
-		// 			}
-		// 			return;
-		// 		}
+								return;
+							}
+						}
+					}
+					return;
+				}
 
-		// 		await saveFilePath(
-		// 			`./scriptsDownload/script${index}.js`,
-		// 			item.children[0].data,
-		// 		);
-		// 	});
+				await saveFilePath(
+					`./scriptsDownload/script${index}.js`,
+						item.children[0].data,
+					)
+			});
 
 		$("link")
 			.get()
 			.forEach(async (item, index) => {
-				console.log({item1: item.attribs["rel"], item2: item.attribs["href"]});
+				if (item.attribs["rel"] === "stylesheet") {
+					const stylesheet = item.attribs["href"];
+					const dominio = "https://www.fincaraiz.com.co";
+					const fullURL = `${dominio}${stylesheet}`;
+					if (fullURL) {
+						try {
+							await downloadFile(
+								fullURL,
+								`./styleDownloaded/style${index}.css`,
+							);
+							return;
+						} catch (e) {
+							console.error(e);
+						}
+						if (fullURL) {
+							try {
+								await downloadFile(
+									fullURL,
+									`./styleDownloaded/style${index}.css`,
+								);
+							} catch (e) {
+								console.log(e);
+							}
+						}
+						return;
+					}
+					await saveFilePath(
+						`./styleDownloaded/style${index}.css`,
+						fullURL,
+					);
+				}
+			});
 
-					console.log(item.parent.children)
-
-				// const styleSheet = item.attribs["rel"]
-				// console.log(styleSheet);
-
-				// if (src) {
-				// 	try {
-				// 		await downloadFile(
-				// 			src,
-				// 			`./scriptsDownload/script${index}.js`,
-				// 		);
-				// 		return;
-				// 	} catch (e) {
-				// 		if (e === 302) {
-				// 			return;
-				// 		}
-
-				// 		if (src && e.code === "ERR_INVALID_URL") {
-				// 			if (/^\/\//.test(src)) {
-				// 				const newUrlWithOutSlashes = src.split("//")[1];
-				// 				const url = `https://${newUrlWithOutSlashes}`;
-				// 				try {
-				// 					await downloadFile(
-				// 						url,
-				// 						`./scriptsDownload/script${index}.js`,
-				// 					);
-				// 				} catch (e) {
-				// 					if (typeof e === "number") {
-				// 						console.log(
-				// 							`URL : ${url} with statusCode: ${e}`,
-				// 						);
-				// 						return;
-				// 					}
-				// 					console.log(e.message);
-				// 				}
-				// 				return;
-				// 			}
-
-				// 			if (/^\//.test(src)) {
-				// 				const url = `${URL}${src}`;
-				// 				try {
-				// 					await downloadFile(
-				// 						url,
-				// 						`./scriptsDownload/script${index}.js`,
-				// 					);
-				// 				} catch (e) {
-				// 					if (typeof e === "number") {
-				// 						console.log(
-				// 							`URL : ${url} with statusCode: ${e}`,
-				// 						);
-				// 						return;
-				// 					}
-				// 					console.log(e.message);
-				// 				}
-
-				// 				return;
-				// 			}
-				// 		}
-				// 	}
-				// 	return;
-				// }
-
-				// await saveFilePath(
-				// 	`./scriptsDownload/script${index}.js`,
-				// 	item.children[0].data,
-				// );
+		$("style")
+			.get()
+			.forEach(async (item, index) => {
+				const data = item.children[0].data;
+                console.log(data);
+				await saveFilePath(
+					`./styleDownloaded/style${index}.css`,
+					data,
+				);
 			});
 		await browser.close();
 	} catch (err) {

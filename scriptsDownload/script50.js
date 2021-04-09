@@ -1,85 +1,54 @@
 
-    LoadBreadcrumbFilterEvents();
-    $(document).ready(function () {
-        if (!(typeof AjaxEnabled !== "undefined" && AjaxEnabled)) {
-            var ctrl = $("#olBCFilters");
-            ctrl.addClass("NoAjax");
-            ctrl.removeClass("Ajax");
+    var listTransactionTypes = [{ "optionValue": 1, "optionDisplay": "Venta" },{ "optionValue": 1, "optionDisplay": "Proyectos Nuevos" },{ "optionValue": 2, "optionDisplay": "Arriendo" },{ "optionValue": 3, "optionDisplay": "Alquiler Vacacional" }];
+    var listTransactionSaleMinPrice = [{ "optionValue": 0, "optionDisplay": "0 Pesos" },{ "optionValue": 20000000, "optionDisplay": "20 Millones" },{ "optionValue": 40000000, "optionDisplay": "40 Millones" },{ "optionValue": 60000000, "optionDisplay": "60 Millones" },{ "optionValue": 80000000, "optionDisplay": "80 Millones" },{ "optionValue": 100000000, "optionDisplay": "100 Millones" },{ "optionValue": 140000000, "optionDisplay": "140 Millones" },{ "optionValue": 200000000, "optionDisplay": "200 Millones" },{ "optionValue": 260000000, "optionDisplay": "260 Millones" },{ "optionValue": 300000000, "optionDisplay": "300 Millones" },{ "optionValue": 500000000, "optionDisplay": "500 Millones" }];
+    var listTransactionSaleMaxPrice = [{ "optionValue": 0, "optionDisplay": "Todos" },{ "optionValue": 20000000, "optionDisplay": "20 Millones" },{ "optionValue": 40000000, "optionDisplay": "40 Millones" },{ "optionValue": 60000000, "optionDisplay": "60 Millones" },{ "optionValue": 80000000, "optionDisplay": "80 Millones" },{ "optionValue": 100000000, "optionDisplay": "100 Millones" },{ "optionValue": 140000000, "optionDisplay": "140 Millones" },{ "optionValue": 200000000, "optionDisplay": "200 Millones" },{ "optionValue": 260000000, "optionDisplay": "260 Millones" },{ "optionValue": 300000000, "optionDisplay": "300 Millones" },{ "optionValue": 500000000, "optionDisplay": "500 Millones" },{ "optionValue": -1, "optionDisplay": "+500 Millones" }];
+    var listTransactionRentMinPrice = [{ "optionValue": 0, "optionDisplay": "0 Pesos" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" }];
+    var listTransactionRentMaxPrice = [{ "optionValue": 0, "optionDisplay": "Todos" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 1500000, "optionDisplay": "1.5 Millones" },{ "optionValue": 2000000, "optionDisplay": "2 Millones" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 3000000, "optionDisplay": "3 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" },{ "optionValue": -1, "optionDisplay": "+4 Millones" }];
+    var listTransactionVacationMinPrice = [{ "optionValue": 0, "optionDisplay": "0 Pesos" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" }];
+    var listTransactionVacationMaxPrice = [{ "optionValue": 0, "optionDisplay": "Todos" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 1500000, "optionDisplay": "1.5 Millones" },{ "optionValue": 2000000, "optionDisplay": "2 Millones" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 3000000, "optionDisplay": "3 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" },{ "optionValue": -1, "optionDisplay": "+4 Millones" }];
+    var listCategoryParkingMinPrice = [{ "optionValue": 0, "optionDisplay": "0 Pesos" },{ "optionValue": 10000, "optionDisplay": "10 Mil" },{ "optionValue": 40000, "optionDisplay": "40 Mil" },{ "optionValue": 60000, "optionDisplay": "60 Mil" },{ "optionValue": 80000, "optionDisplay": "80 Mil" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 140000, "optionDisplay": "140 Mil" },{ "optionValue": 200000, "optionDisplay": "200 Mil" },{ "optionValue": 260000, "optionDisplay": "260 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" }];
+    var listCategoryParkingMaxPrice = [{ "optionValue": 0, "optionDisplay": "Todos" },{ "optionValue": 10000, "optionDisplay": "10 Mil" },{ "optionValue": 40000, "optionDisplay": "40 Mil" },{ "optionValue": 60000, "optionDisplay": "60 Mil" },{ "optionValue": 80000, "optionDisplay": "80 Mil" },{ "optionValue": 100000, "optionDisplay": "100 Mil" },{ "optionValue": 140000, "optionDisplay": "140 Mil" },{ "optionValue": 200000, "optionDisplay": "200 Mil" },{ "optionValue": 260000, "optionDisplay": "260 Mil" },{ "optionValue": 300000, "optionDisplay": "300 Mil" },{ "optionValue": 500000, "optionDisplay": "500 Mil" },{ "optionValue": 800000, "optionDisplay": "800 Mil" },{ "optionValue": 1000000, "optionDisplay": "1 Millón" },{ "optionValue": 2500000, "optionDisplay": "2.5 Millones" },{ "optionValue": 4000000, "optionDisplay": "4 Millones" }];
+    var PresentTransaction = "Arriendo";
+    var PresentCategory = "";
+    var listFacets = [{data:[{Id:"8",Name:"Apartamento",Dictionary:"Category1Id",Count:"22136"},{Id:"4",Name:"Oficina",Dictionary:"Category1Id",Count:"7858"},{Id:"3",Name:"Local",Dictionary:"Category1Id",Count:"5153"},{Id:"22",Name:"Apartaestudio",Dictionary:"Category1Id",Count:"3378"},{Id:"9",Name:"Casa",Dictionary:"Category1Id",Count:"2436"},{Id:"10",Name:"Habitacion",Dictionary:"Category1Id",Count:"2095"},{Id:"5",Name:"Bodega",Dictionary:"Category1Id",Count:"1878"},{Id:"19",Name:"Edificio",Dictionary:"Category1Id",Count:"553"},{Id:"18",Name:"Consultorio",Dictionary:"Category1Id",Count:"331"},{Id:"24",Name:"Parqueadero",Dictionary:"Category1Id",Count:"82"},{Id:"2",Name:"Lote",Dictionary:"Category1Id",Count:"80"},{Id:"23",Name:"Casa Lote",Dictionary:"Category1Id",Count:"16"},{Id:"21",Name:"Casa Campestre",Dictionary:"Category1Id",Count:"11"},{Id:"7",Name:"Finca",Dictionary:"Category1Id",Count:"1"}],"info":"CategoryAdvert"},{data:[{Id:"4",Name:"Mi casa ya",Dictionary:"ProductCode",Count:"0"},{Id:"5",Name:"Sabana Bogotá",Dictionary:"ProductCode",Count:"0"}],"info":"ProductCodeAdvert"},{data:[{Id:"4",Name:"16 a 30 años",Dictionary:"AgeId",Count:"5944"},{Id:"2",Name:"1 a 8 años",Dictionary:"AgeId",Count:"5163"},{Id:"3",Name:"9 a 15 años",Dictionary:"AgeId",Count:"4866"},{Id:"5",Name:"Más de 30 años",Dictionary:"AgeId",Count:"2202"},{Id:"1",Name:"Menos de 1 año",Dictionary:"AgeId",Count:"1076"}],"info":"AgeAdvert"},{data:[{Id:"141",Name:"Trans. Público cercano",Dictionary:"ExtrasId",Count:"15282"},{Id:"143",Name:"Supermercados / C.Comerciales",Dictionary:"ExtrasId",Count:"13892"},{Id:"142",Name:"Parques cercanos",Dictionary:"ExtrasId",Count:"13488"},{Id:"139",Name:"Zona Residencial",Dictionary:"ExtrasId",Count:"13053"},{Id:"130",Name:"Citófono",Dictionary:"ExtrasId",Count:"12812"},{Id:"20",Name:"Cocina Integral",Dictionary:"ExtrasId",Count:"12615"},{Id:"133",Name:"Instalación de gas",Dictionary:"ExtrasId",Count:"12251"},{Id:"134",Name:"Zona de lavandería",Dictionary:"ExtrasId",Count:"11480"},{Id:"13",Name:"Ascensor",Dictionary:"ExtrasId",Count:"11056"},{Id:"140",Name:"Colegios / Universidades",Dictionary:"ExtrasId",Count:"10865"},{Id:"115",Name:"Portería / Recepción",Dictionary:"ExtrasId",Count:"9034"},{Id:"112",Name:"Salón Comunal",Dictionary:"ExtrasId",Count:"9023"},{Id:"128",Name:"Calentador",Dictionary:"ExtrasId",Count:"8936"},{Id:"5",Name:"Parqueadero Visitantes",Dictionary:"ExtrasId",Count:"8504"},{Id:"119",Name:"Vigilancia",Dictionary:"ExtrasId",Count:"7512"},{Id:"12",Name:"En conjunto cerrado",Dictionary:"ExtrasId",Count:"7308"},{Id:"117",Name:"Circuito cerrado de TV",Dictionary:"ExtrasId",Count:"7219"},{Id:"11",Name:"Depósito / Bodega",Dictionary:"ExtrasId",Count:"6674"},{Id:"124",Name:"Hall de Alcobas",Dictionary:"ExtrasId",Count:"6634"},{Id:"121",Name:"Baño Auxiliar",Dictionary:"ExtrasId",Count:"6267"},{Id:"109",Name:"Garaje(s)",Dictionary:"ExtrasId",Count:"5836"},{Id:"107",Name:"Zonas Verdes",Dictionary:"ExtrasId",Count:"5429"},{Id:"106",Name:"Zona Infantil",Dictionary:"ExtrasId",Count:"5228"},{Id:"180",Name:"Closet",Dictionary:"ExtrasId",Count:"5192"},{Id:"122",Name:"Estudio",Dictionary:"ExtrasId",Count:"5149"},{Id:"32",Name:"Balcón",Dictionary:"ExtrasId",Count:"4971"},{Id:"129",Name:"Chimenea",Dictionary:"ExtrasId",Count:"4722"},{Id:"137",Name:"Zona Comercial",Dictionary:"ExtrasId",Count:"4536"},{Id:"4",Name:"Piso en Baldosa /  Mármol",Dictionary:"ExtrasId",Count:"4215"},{Id:"263",Name:"Cómodas vias de acceso",Dictionary:"ExtrasId",Count:"4182"},{Id:"131",Name:"Cocina tipo Americano",Dictionary:"ExtrasId",Count:"4084"},{Id:"135",Name:"Sobre vía principal",Dictionary:"ExtrasId",Count:"4078"},{Id:"245",Name:"Vigilancia privada 24*7",Dictionary:"ExtrasId",Count:"4051"},{Id:"157",Name:"Portería / Vigilancia",Dictionary:"ExtrasId",Count:"3777"},{Id:"103",Name:"Gimnasio",Dictionary:"ExtrasId",Count:"3640"},{Id:"189",Name:"Sobre vía secundaria",Dictionary:"ExtrasId",Count:"3492"},{Id:"126",Name:"Vista panorámica",Dictionary:"ExtrasId",Count:"3319"},{Id:"10",Name:"Terraza",Dictionary:"ExtrasId",Count:"3028"},{Id:"127",Name:"Barra estilo americano",Dictionary:"ExtrasId",Count:"2746"},{Id:"207",Name:"Garaje Cubierto",Dictionary:"ExtrasId",Count:"2731"},{Id:"0",Name:"Sin Especificar",Dictionary:"ExtrasId",Count:"2691"},{Id:"211",Name:"Comedor",Dictionary:"ExtrasId",Count:"2604"},{Id:"217",Name:"Piso en Madera",Dictionary:"ExtrasId",Count:"2435"},{Id:"272",Name:"Cuarto de Servicio",Dictionary:"ExtrasId",Count:"2334"},{Id:"7",Name:"Jardín",Dictionary:"ExtrasId",Count:"2235"},{Id:"164",Name:"Garaje / Parqueadero(s)",Dictionary:"ExtrasId",Count:"2078"},{Id:"147",Name:"Vigilancia 24x7",Dictionary:"ExtrasId",Count:"1877"},{Id:"105",Name:"Salón de Juegos",Dictionary:"ExtrasId",Count:"1774"},{Id:"222",Name:"Shut de basura",Dictionary:"ExtrasId",Count:"1605"},{Id:"200",Name:"Área Urbana",Dictionary:"ExtrasId",Count:"1506"},{Id:"145",Name:"Loft",Dictionary:"ExtrasId",Count:"1458"},{Id:"259",Name:"Restaurantes",Dictionary:"ExtrasId",Count:"1423"},{Id:"214",Name:"Escalera de Emergencia",Dictionary:"ExtrasId",Count:"1372"},{Id:"270",Name:"Servicios independientes",Dictionary:"ExtrasId",Count:"1368"},{Id:"114",Name:"Vivienda Multifamiliar",Dictionary:"ExtrasId",Count:"1336"},{Id:"118",Name:"Planta Eléctrica",Dictionary:"ExtrasId",Count:"1298"},{Id:"16",Name:"Patio",Dictionary:"ExtrasId",Count:"1296"},{Id:"19",Name:"Amoblado",Dictionary:"ExtrasId",Count:"1263"},{Id:"116",Name:"Caldera",Dictionary:"ExtrasId",Count:"1192"},{Id:"132",Name:"Comedor auxiliar",Dictionary:"ExtrasId",Count:"1167"},{Id:"193",Name:"Ventilación Natural",Dictionary:"ExtrasId",Count:"1158"},{Id:"17",Name:"Piscina",Dictionary:"ExtrasId",Count:"1149"},{Id:"260",Name:"Bombas de gasolina",Dictionary:"ExtrasId",Count:"1100"},{Id:"185",Name:"En Edificio",Dictionary:"ExtrasId",Count:"1070"},{Id:"177",Name:"Zona de BBQ",Dictionary:"ExtrasId",Count:"1034"},{Id:"264",Name:"Cerca centro comercial",Dictionary:"ExtrasId",Count:"1025"},{Id:"218",Name:"Puerta de seguridad",Dictionary:"ExtrasId",Count:"971"},{Id:"125",Name:"Sauna / Turco / Jacuzzi",Dictionary:"ExtrasId",Count:"929"},{Id:"120",Name:"Alarma",Dictionary:"ExtrasId",Count:"915"},{Id:"148",Name:"Bahía exterior de parqueo",Dictionary:"ExtrasId",Count:"910"},{Id:"144",Name:"Duplex",Dictionary:"ExtrasId",Count:"892"},{Id:"100",Name:"Cancha de Squash",Dictionary:"ExtrasId",Count:"880"},{Id:"174",Name:"Cocina Equipada",Dictionary:"ExtrasId",Count:"879"},{Id:"202",Name:"Cerca a sector comercial",Dictionary:"ExtrasId",Count:"831"},{Id:"186",Name:"En zona Comercial",Dictionary:"ExtrasId",Count:"695"},{Id:"187",Name:"En zona residencial",Dictionary:"ExtrasId",Count:"675"},{Id:"262",Name:"Seguridad",Dictionary:"ExtrasId",Count:"658"},{Id:"150",Name:"Tanques de Agua",Dictionary:"ExtrasId",Count:"523"},{Id:"159",Name:"Cerca de Zona Urbana",Dictionary:"ExtrasId",Count:"512"},{Id:"181",Name:"Baño Independiente",Dictionary:"ExtrasId",Count:"511"},{Id:"108",Name:"Cuarto de Escoltas",Dictionary:"ExtrasId",Count:"508"},{Id:"267",Name:"Alcantarillado",Dictionary:"ExtrasId",Count:"492"},{Id:"175",Name:"Servicios Públicos",Dictionary:"ExtrasId",Count:"484"},{Id:"102",Name:"Canchas Deportivas",Dictionary:"ExtrasId",Count:"479"},{Id:"123",Name:"Cuarto de servicio",Dictionary:"ExtrasId",Count:"459"},{Id:"162",Name:"Cancha de Baloncesto",Dictionary:"ExtrasId",Count:"420"},{Id:"192",Name:"Todos los Servicios",Dictionary:"ExtrasId",Count:"419"},{Id:"163",Name:"Cancha de Futbol",Dictionary:"ExtrasId",Count:"393"},{Id:"138",Name:"Zona Industrial",Dictionary:"ExtrasId",Count:"392"},{Id:"156",Name:"Acceso Pavimentado",Dictionary:"ExtrasId",Count:"378"},{Id:"171",Name:"Cochera",Dictionary:"ExtrasId",Count:"367"},{Id:"325",Name:"Sauna / Turco / Jacuzzi",Dictionary:"ExtrasId",Count:"339"},{Id:"113",Name:"Vivienda Bifamiliar",Dictionary:"ExtrasId",Count:"334"},{Id:"146",Name:"PentHouse",Dictionary:"ExtrasId",Count:"328"},{Id:"216",Name:"Piso en Alfombra",Dictionary:"ExtrasId",Count:"283"},{Id:"101",Name:"Cancha de Tennis",Dictionary:"ExtrasId",Count:"281"},{Id:"249",Name:"Senderos ecológicos",Dictionary:"ExtrasId",Count:"272"},{Id:"273",Name:"Baño de Servicio",Dictionary:"ExtrasId",Count:"270"},{Id:"155",Name:"Despensa",Dictionary:"ExtrasId",Count:"262"},{Id:"250",Name:"Asador",Dictionary:"ExtrasId",Count:"236"}],"info":"ExtrasAdvert"},{data:[{Id:"4/2/2021 12:00:00 AM",Name:"Últimos 7 días",Dictionary:"GridDate",Count:"2454"},{Id:"4/6/2021 12:00:00 AM",Name:"Últimos 3 días",Dictionary:"GridDate",Count:"1407"},{Id:"4/9/2021 12:00:00 AM",Name:"Hoy",Dictionary:"GridDate",Count:"9"}],"info":"GridDateAdvert"},{data:[{Id:"3",Name:"Inmuebles con foto",Dictionary:"NumPhotos",Count:"23061"}],"info":"OtherFiltersAdvert"},{data:[{Id:"",Name:"",Dictionary:"GroupName",Count:"19153"},{Id:"AFYDI",Name:"AFYDI",Dictionary:"GroupName",Count:"1770"},{Id:"Lonja de Bogotá",Name:"Lonja de Bogotá",Dictionary:"GroupName",Count:"605"},{Id:"REMAX",Name:"REMAX",Dictionary:"GroupName",Count:"105"},{Id:"Century 21",Name:"Century 21",Dictionary:"GroupName",Count:"33"},{Id:"Lonja de Santander",Name:"Lonja de Santander",Dictionary:"GroupName",Count:"1"}],"info":"GroupNameAdvert"},{data:[{Id:"3",Name:"3",Dictionary:"StratumId",Count:"6058"},{Id:"4",Name:"4",Dictionary:"StratumId",Count:"5993"},{Id:"6",Name:"6",Dictionary:"StratumId",Count:"5401"},{Id:"5",Name:"5",Dictionary:"StratumId",Count:"3145"},{Id:"2",Name:"2",Dictionary:"StratumId",Count:"1026"},{Id:"",Name:"",Dictionary:"StratumId",Count:"455"},{Id:"1",Name:"1",Dictionary:"StratumId",Count:"55"},{Id:"Campestre",Name:"Campestre",Dictionary:"StratumId",Count:"3"}],"info":"StratumAdvert"}];
+    var listPriceTypes = [{ "optionValue": 1, "optionDisplay": "Costo mensual" },{ "optionValue": 2, "optionDisplay": "Costo diario" }];
+    var listEnvironments = [{ "optionValue": 1, "optionDisplay": "1" },{ "optionValue": 2, "optionDisplay": "2" },{ "optionValue": 3, "optionDisplay": "3" },{ "optionValue": 4, "optionDisplay": "4+" }];
+    var listRomms = [{ "optionValue": 1, "optionDisplay": "1" },{ "optionValue": 2, "optionDisplay": "2" },{ "optionValue": 3, "optionDisplay": "3" },{ "optionValue": 4, "optionDisplay": "4+" }];
+    var listBathRomms = [{ "optionValue": 1, "optionDisplay": "1" },{ "optionValue": 2, "optionDisplay": "2" },{ "optionValue": 3, "optionDisplay": "3" },{ "optionValue": 4, "optionDisplay": "4+" }];
+    var listSurfaceFrom = [{ "optionValue": 0, "optionDisplay": "Seleccione" },{ "optionValue": 20, "optionDisplay": "20 m2" },{ "optionValue": 60, "optionDisplay": "60 m2" },{ "optionValue": 100, "optionDisplay": "100 m2" },{ "optionValue": 200, "optionDisplay": "200 m2" },{ "optionValue": 260, "optionDisplay": "260 m2" },{ "optionValue": 500, "optionDisplay": "500 m2" },{ "optionValue": 560, "optionDisplay": "560 m2" },{ "optionValue": 1000, "optionDisplay": "1000 m2" }];
+    var listSurfaceTo = [{ "optionValue": 0, "optionDisplay": "Seleccione" },{ "optionValue": 20, "optionDisplay": "20 m2" },{ "optionValue": 60, "optionDisplay": "60 m2" },{ "optionValue": 100, "optionDisplay": "100 m2" },{ "optionValue": 200, "optionDisplay": "200 m2" },{ "optionValue": 260, "optionDisplay": "260 m2" },{ "optionValue": 500, "optionDisplay": "500 m2" },{ "optionValue": 560, "optionDisplay": "560 m2" },{ "optionValue": 1000, "optionDisplay": "1000 m2" },{ "optionValue": -1, "optionDisplay": "+1000 m2" }];
+    var listParkingSize = [{ "optionValue": 278, "optionDisplay": "Pequeño" },{ "optionValue": 279, "optionDisplay": "Mediano" },{ "optionValue": 280, "optionDisplay": "Grande" }];
+    var listParkingAvailability = [{ "optionValue": 281, "optionDisplay": "Lunes" },{ "optionValue": 282, "optionDisplay": "Martes" },{ "optionValue": 283, "optionDisplay": "Miercoles" },{ "optionValue": 284, "optionDisplay": "Jueves" },{ "optionValue": 285, "optionDisplay": "Viernes" },{ "optionValue": 286, "optionDisplay": "Sabado" },{ "optionValue": 287, "optionDisplay": "Domingo" }];
+    var ParentCategory = 1;
+
+    function InitializeViewModelFilters() {
+        ko.options.useOnlyNativeEvents = true;
+        if (typeof (window.vmResults) == "undefined") { window.vmResults = new AdvertResultsViewModel(); };
+        UpdateCountersTransactionTypes();
+        if (PresentTransaction == "Venta") {
+            window.vmResults.init(listTransactionTypes, listFacets, listPriceTypes, listTransactionSaleMinPrice, listTransactionSaleMaxPrice, listEnvironments, listRomms, listBathRomms, listSurfaceFrom, listSurfaceTo, listParkingSize, listParkingAvailability, sfFind, ParentCategory);
         }
-
-        //evento keyUp sobre txtNbhood
-        //al presionar Enter, lanza la busqueda
-        $("#txtNbhood").keyup(function (event) {
-            var Value = $(this).val();
-            //si presiona la tecla enter
-            BtnClearWard(Value);
-
-            if (event.keyCode == 13) {
-                FindAdvertNbhood();
+        else if (PresentTransaction == "Arriendo") {
+            if (PresentCategory == "24") {
+                window.vmResults.init(listTransactionTypes, listFacets, listPriceTypes, listCategoryParkingMinPrice, listCategoryParkingMaxPrice, listEnvironments, listRomms, listBathRomms, listSurfaceFrom, listSurfaceTo, listParkingSize, listParkingAvailability, sfFind, ParentCategory);
             }
-        });
-
-        BtnClearWard($("#txtNbhood").val());
-    });
-    //function SetNbhoodDefault() {
-    //    var ctrl = $("#txtNbhood");
-    //    ctrl.val(ctrl.attr("default")).css('color', 'rgb(21, 36, 93)');
-    //}
-    function ToggleCheckFromAnchor(item, event) {
-        trackingAlreadyCalled = false;
-        if (typeof AjaxEnabled !== "undefined" && AjaxEnabled) {
-            var chks = (($(item).is('a') == true) ? $(item).parent().find("input[type='checkbox']") : $(item).find("input[type='checkbox']"));
-            if (chks.length > 0) {
-                var chk = $(chks[0]);
-                if ($(event.target).is('input') == false) {
-                    chk.attr('checked', !chk.attr('checked'));
-                }
-                chk.attr("changed", "true");
+            else {
+                window.vmResults.init(listTransactionTypes, listFacets, listPriceTypes, listTransactionRentMinPrice, listTransactionRentMaxPrice, listEnvironments, listRomms, listBathRomms, listSurfaceFrom, listSurfaceTo, listParkingSize, listParkingAvailability, sfFind, ParentCategory);
             }
-            CleanNbhood(false);
-            var CtrlParent = $(item).closest('.dropdown-check-list');
-            if ($(CtrlParent).length > 0 && $(CtrlParent).find('input[type="checkbox"][binding="Location3Id"]').length > 0) {
-                ChangeTextSelection(CtrlParent, 'input[type="checkbox"][binding="Location3Id"]:checked');
-            }
-            var ReturnValue = ($(event.target).is('a') == true) ? false : true;
-            if (QuebeFindCall != undefined) { QuebeFindBreadCrumbCall(item, 1000); }
-            return ReturnValue;
+        }
+        else if (PresentTransaction == "Alquiler_Vacacional") {
+            window.vmResults.init(listTransactionTypes, listFacets, listPriceTypes, listTransactionVacationMinPrice, listTransactionVacationMaxPrice, listEnvironments, listRomms, listBathRomms, listSurfaceFrom, listSurfaceTo, listParkingSize, listParkingAvailability, sfFind, ParentCategory);
         }
         else {
-            return true;
+            window.vmResults.init(listTransactionTypes, listFacets, listPriceTypes, listTransactionVacationMinPrice, listTransactionVacationMaxPrice, listEnvironments, listRomms, listBathRomms, listSurfaceFrom, listSurfaceTo, listParkingSize, listParkingAvailability, sfFind, ParentCategory);
         }
+        if (!!ko.dataFor(document.getElementById("FiltersKnockOut")) == false) { ko.applyBindings(window.vmResults); }
     }
 
-    function ChangeTextSelection(item, SelectorChilds) {
-        var SelectedItems = $(item).find(SelectorChilds);
-        var Textanchor = (($(SelectedItems).length == 1) ? $(SelectedItems[0]).attr('locationname') : (($(SelectedItems).length > 1) ? $(SelectedItems[0]).attr('locationname') + ", " + $(SelectedItems[1]).attr('locationname') : "Seleccione Zona"));
-        $(item).find('.anchor').find('a').text(Textanchor);
+    function UpdateCountersTransactionTypes() {
+        if (listTransactionTypes != undefined && listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Venta"; }).length > 0) { listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Venta"; })[0].optionCount = "38748"; }
+        if (listTransactionTypes != undefined && listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Proyectos Nuevos"; }).length > 0) { listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Proyectos Nuevos"; })[0].optionCount = "493"; }
+        if (listTransactionTypes != undefined && listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Arriendo"; }).length > 0) { listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Arriendo"; })[0].optionCount = "22136"; }
+        if (listTransactionTypes != undefined && listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Alquiler Vacacional"; }).length > 0) { listTransactionTypes.filter(function (obj) { return obj.optionDisplay == "Alquiler Vacacional"; })[0].optionCount = "107"; }
     }
 
-    function CleanNbhood(ExecuteSearch) {
-        $("#txtNbhood").val('');
-        $("#btnClearNbhood").css("display", "none");
-        if (ExecuteSearch == true) { FindAdvertNbhood(); }
-    }
-
-    function FindAdvertNbhood() {
-        var txtNbh = $("#txtNbhood");
-        if (txtNbh.val() != "") {
-            sfFind.Neighborhood = ValidIlegalCharacters(txtNbh.val());
-            trackingClick("Results - Buscar por Barrio", "SpecificTracking");
-        }
-        else {
-            sfFind.Neighborhood = "";
-        }
-        trackingAlreadyCalled = false;
-        window.vmResults.FindAdvertsFacet('');
-    }
-
-    function BtnClearWard(MyValue) {
-        if (MyValue == undefined || MyValue == "" || MyValue.length <= 0) {
-            $("#btnClearNbhood").css("display", "none");
-        }
-        else {
-            if ($("#btnClearNbhood").css("display") == "none") { $("#btnClearNbhood").css("display", "block"); }
-        }
-    }
