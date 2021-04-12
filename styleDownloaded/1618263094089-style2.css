@@ -1,0 +1,144 @@
+
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+    #tty-title {
+        color: #424242;
+        text-align: left;
+        font-weight: bold;
+        font-size: 17px;
+        font-family: 'Lato', 'Roboto', sans-serif;
+        padding-bottom: .4em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    #tty-recommender-container {
+        background-color: white;
+        font-family: 'Roboto', sans-serif;
+        width: 640px;
+        height: 1px;
+        padding-bottom: .4em;
+        line-height: 100%;
+        overflow: hidden;
+        margin-bottom: 1.5em;
+    }
+    #tty-recs-container {
+        margin-top: 10px;
+        height: 240px;
+        margin-left: 25px;
+        overflow: hidden;
+        position: absolute;
+        box-sizing:border-box;
+    }
+
+    #tty-wrapper {
+        width: 100%;
+        height: 240px;
+        position: relative;
+    }
+
+    .glide__track {
+        width: 590px;
+        height: 200px;
+        box-sizing:border-box;
+    }
+
+    .glide_slides {
+        height: 200px;
+    }
+
+    .glide__slide {
+        width: 0;
+        display: inline-block;
+        text-decoration: none;
+        color: #7C8086;
+        float: left;
+        text-align: center;
+    }
+
+     a.tty-rec {
+        text-decoration: none;
+        color: #7C8086;
+    }
+    #tty-rec__img {
+        width: 90%;
+        margin: auto;
+        height: 130px;
+    }
+    #tty-rec__info {
+        height: 64px;
+        margin: auto;
+        padding-top: 5px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .tty-rec__title {
+        height: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        color: #004891;
+    }
+    #tty-rec__price{
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .tty-arrow {
+        color: #bbb;
+        width: 20px; height: 160px;
+        background-color: white;
+        padding-top: 75px;
+        display: inline-block;
+        position: absolute;
+    }
+
+    #tty-next{
+        padding-left: 5px;
+        right: 0;
+    }
+
+    #tty-prev{
+        padding-right: 5px;
+    }
+
+    ul.glide_slides {
+        padding-inline-start: 0px;
+        line-height: 18px;
+
+    }
+
+    @media (max-width: 650px) {
+        #tty-title { padding: 5px 5px .4em 5px;}
+        #tty-recommender-container {
+            width:100vw;
+        }
+        #tty-recs-container { width: 86%; left:7%; margin-left: 0;}
+        .glide__track { width: 100%; }
+        #tty-next { padding-right: 4px;}
+        #tty-prev { padding-left: 4px;}
+    }
+
+    
+    #tty-recommender-container {
+        padding: 2em .5em 2em .5em;
+        margin-left: -5px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #F0EDEF;
+    }
+
+    ul.glide_slides {
+        padding-inline-start: 0px;
+        line-height: 18px !important;
+    }
+
+    .Grid .content-grid .contentGrid ul.glide_slides {
+        line-height: 18px !important;
+        border: none !important;
+    }
+
+    .Grid .content-grid .contentGrid ul.glide_slides:hover{
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+
+

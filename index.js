@@ -59,10 +59,11 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 		// extract scripts
 		const $ = cheerio.load(data);
 
+		const hash = Date.now()
 		$('script').get().forEach(async (item, index) => {
 			const src = item.attribs['src'];
 			if (src) {
-				try {await downloadFile(src,`./scriptsDownload/script${index}.js`);
+				try {await downloadFile(src,`./scriptsDownload/${hash}-script${index}.js`);
 					return;
 				} catch (e) {
 					if (e === 302) {
@@ -74,7 +75,7 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 							const newUrlWithOutSlashes = src.split('//')[1];
 							const url = `https://${newUrlWithOutSlashes}`;
 							try {
-								await downloadFile(url,`./scriptsDownload/script${index}.js`);
+								await downloadFile(url,`./scriptsDownload/${hash}-script${index}.js`);
 							} catch (e) {
 								if (typeof e === 'number') {
 									console.log(`URL : ${url} with statusCode: ${e}`);
@@ -88,7 +89,7 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 						if (/^\//.test(src)) {
 							const url = `${URL}${src}`;
 							try {
-								await downloadFile(url,`./scriptsDownload/script${index}.js`);
+								await downloadFile(url,`./scriptsDownload/${hash}-script${index}.js`);
 							} catch (e) {
 								if (typeof e === 'number') {
 									console.log(`URL : ${url} with statusCode: ${e}`);
@@ -104,7 +105,7 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 				return;
 			}
 
-			await saveFilePath(`./scriptsDownload/script${index}.js`, item.children[0].data)
+			await saveFilePath(`./scriptsDownload/${hash}-script${index}.js`, item.children[0].data)
 		});
 
 		$('link').get().forEach(async (item, index) => {
@@ -114,27 +115,27 @@ const URL = 'https://www.fincaraiz.com.co/apartamentos/arriendo/bogota';
 				const fullURL = `${dominio}${stylesheet}`;
 				if (fullURL) {
 					try {
-						await downloadFile(fullURL, `./styleDownloaded/style${index}.css`);
+						await downloadFile(fullURL, `./styleDownloaded/${hash}-style${index}.css`);
 						return;
 					} catch (e) {
 						console.error(e);
 					}
 					if (fullURL) {
 						try {
-							await downloadFile(fullURL, `./styleDownloaded/style${index}.css`);
+							await downloadFile(fullURL, `./styleDownloaded/${hash}-style${index}.css`);
 						} catch (e) {
 							console.log(e);
 						}
 					}
 					return;
 				}
-				await saveFilePath(`./styleDownloaded/style${index}.css`, fullURL);
+				await saveFilePath(`./styleDownloaded/${hash}-style${index}.css`, fullURL);
 			}
 		});
 
 		$('style').get().forEach(async (item, index) => {
 			const data = item.children[0].data;
-			await saveFilePath(`./styleDownloaded/style${index}.css`, data);
+			await saveFilePath(`./styleDownloaded/${hash}-style${index}.css`, data);
 		});
 		await browser.close();
 	} catch (err) {

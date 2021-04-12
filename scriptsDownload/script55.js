@@ -1,1 +1,1 @@
-function OLAPAdvertContact2(advId,originId,typeId){ WSStatistics.Contact(advId,typeId,40,'2021/04/09:01:06:23:953-074-35',originId);}
+function OLAPAdvertContact2(advId,originId,typeId){ WSStatistics.Contact(advId,typeId,40,'2021/04/12:21:21:47:749-074-5',originId);}
