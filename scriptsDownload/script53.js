@@ -1,32 +1,82 @@
 
-    $("img.lazy").lazyload({ effect: "fadeIn", threshold: 200 });
-    console.timeEnd('Test');
+            var cEmail = "";
+            var cName = "";
+            var cPhone = "";
+            var cCity  = "";            
+            var cCategoryGroup =  "1";
+            var contactToken = 'AF215EBA85EFBC3782197EE4F3368434C3DC2E3FF1B20B071BCD8B2210307B480062C4EFF0A1B5D7';
+            var contextdomain  = 'www.fincaraiz.com.co';
+            var clientIdR = '0';
 
-    var lstAdverts = [{data:[{AdvertId:"6132311",Title:"Apartamento en Arriendo - Bogotá Chicó",Address:"Carrera 21  94 - 27",PhotoUrl:"2021/02/26/6132311/apartamento-arriendo-cundinamarca-bogota-341473855_m.jpg",ClientName:"COVO SAS",ClientId:"2758916",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5881024",Title:"Apartamento en Arriendo - Bogotá Centro",Address:"Calle 19  5-30",PhotoUrl:"2020/11/13/5881024/apartamento-arriendo-cundinamarca-bogota-317018106_m.jpg",ClientName:"Luz Marina Lozano",ClientId:"2744808",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"5697531",Title:"Apartamento en Arriendo - Bogotá EL VIRREY",Address:"CARRERA 19   85- 93",PhotoUrl:"2020/09/06/5697531/apartamento-arriendo-cundinamarca-bogota-338067680_m.jpg",ClientName:"Inmobiliaria MG",ClientId:"329507",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5931491",Title:"Apartamento en Arriendo - Bogotá Zona Norte",Address:"Carrera 20 Calle 185",PhotoUrl:"2020/12/04/5931491/apartamento-arriendo-cundinamarca-bogota-321624211_m.jpg",ClientName:"Gabriel Castellanos",ClientId:"746247",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6042057",Title:"Apartamento en Arriendo - Bogotá CEDRITOS",Address:"CALLE 144  11A- 11",PhotoUrl:"2021/01/27/6042057/apartamento-arriendo-cundinamarca-bogota-350451831_m.jpg",ClientName:"Organización Inmobiliaria Diaz Castro S.A.S",ClientId:"29129",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6127831",Title:"Apartamento en Arriendo - Bogotá CHICO NORTE",Address:"CR 19A 86A 67",PhotoUrl:"2021/02/24/6127831/apartamento-arriendo-cundinamarca-bogota-350451635_m.jpg",ClientName:"Luque Ospina & Cia SAS",ClientId:"107711",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6070376",Title:"Apartamento en Arriendo - Bogotá Chapinero Central",Address:"Calle 48 No. 14-30",PhotoUrl:"2021/02/05/6070376/apartamento-arriendo-cundinamarca-bogota-348084111_m.jpg",ClientName:"Nuevo Horizonte Fincaraiz SAS",ClientId:"1328663",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6206608",Title:"Apartamento en Arriendo - Bogotá Zona Norte",Address:"Calle 183 No. 17- 32",PhotoUrl:"2021/03/24/6206608/apartamento-arriendo-cundinamarca-bogota-347433637_m.jpg",ClientName:"Nuevo Horizonte Fincaraiz SAS",ClientId:"1328663",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5909154",Title:"Apartamento en Arriendo - Bogotá Usatama",Address:"CL 22 C",PhotoUrl:"2020/11/25/5909154/apartamento-arriendo-cundinamarca-bogota-350451111_m.jpg",ClientName:"Nobilis SAS",ClientId:"191645",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6239990",Title:"Apartamento en Arriendo - Bogotá San Vicente Ferrer Tunjuelito",Address:"Calle 53 B sur 33a 67 ",PhotoUrl:"2021/04/08/6239990/apartamento-arriendo-cundinamarca-bogota-350450925_m.jpg",ClientName:"ana marcela salgado martinez",ClientId:"39263",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6239981",Title:"Apartamento en Arriendo - Bogotá Marly",Address:"Cra 9 52 A 20",PhotoUrl:"2021/04/08/6239981/apartamento-arriendo-cundinamarca-bogota-350450135_m.jpg",ClientName:"Deysi  Torres",ClientId:"3068132",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6062689",Title:"Apartamento en Arriendo - Bogotá Santa Bárbara",Address:"Carrera 9C # 121 - 53 Torre B Apto 201 Conjunto Vallarta",PhotoUrl:"2021/02/03/6062689/apartamento-arriendo-cundinamarca-bogota-350447318_m.jpg",ClientName:"Rentabien S.A.S",ClientId:"28966",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6173064",Title:"Apartamento en Arriendo - Bogotá Chapinero Alto",Address:"calle 64 1-15",PhotoUrl:"2021/03/11/6173064/apartamento-arriendo-cundinamarca-bogota-350446428_m.jpg",ClientName:"GRUPO INMOBILIARIO G-2",ClientId:"866036",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6010967",Title:"Apartamento en Arriendo - Bogotá Cedritos Usaquén",Address:"Calle 146 # 19 - 14 Apto 303 TorreA Agrupacion Residencial La Bastilla PH",PhotoUrl:"2021/01/15/6010967/apartamento-arriendo-cundinamarca-bogota-350446870_m.jpg",ClientName:"SI Sistema Integral Inmobiliario",ClientId:"82147",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6239920",Title:"Apartamento en Arriendo - Bogotá Libertador",Address:"calle 32 sur#26b-11 ",PhotoUrl:"2021/04/08/6239920/apartamento-arriendo-cundinamarca-bogota-350446880_m.jpg",ClientName:"Andrea Sarmiento ",ClientId:"737409",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6239907",Title:"Apartamento en Arriendo - Bogotá Normandía",Address:"Cr 71 No 54-48",PhotoUrl:"2021/04/08/6239907/apartamento-arriendo-cundinamarca-bogota-350444624_m.jpg",ClientName:"Sandra Ramirez",ClientId:"1155838",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6239497",Title:"Apartamento en Arriendo - Bogotá Chicó Navarra",Address:"CALLE 107· 16 - 55",PhotoUrl:"2021/04/08/6239497/apartamento-arriendo-cundinamarca-bogota-350443441_m.jpg",ClientName:"Tu Oferta Inmobiliaria",ClientId:"929011",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6125749",Title:"Apartamento en Arriendo - Bogotá Chicó",Address:"Carrera 19B 92-27",PhotoUrl:"2021/02/24/6125749/apartamento-arriendo-cundinamarca-bogota-350442806_m.jpg",ClientName:"CR MERCANTIL",ClientId:"2728226",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5722970",Title:"Apartamento en Arriendo - Bogotá CHAPINERO ALTO",Address:"CALLE 65   2- 66",PhotoUrl:"2020/09/15/5722970/apartamento-arriendo-cundinamarca-bogota-350442665_m.jpg",ClientName:"Soto Sinisterra SAS",ClientId:"139151",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5850975",Title:"Apartamento en Arriendo - Bogotá SAN ANTONIO",Address:"CALLE 180   12B- 16",PhotoUrl:"2020/11/03/5850975/apartamento-arriendo-cundinamarca-bogota-350442491_m.jpg",ClientName:"CFR Colombiana de Finca Raiz Ltda",ClientId:"28866",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6079541",Title:"Apartamento en Arriendo - Bogotá ALQUERIA",Address:"CALLE 37 A SUR   52- 04",PhotoUrl:"2021/02/09/6079541/apartamento-arriendo-cundinamarca-bogota-350441605_m.jpg",ClientName:"R & F Finca Raíz S.A.S",ClientId:"28875",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6239837",Title:"Apartamento en Arriendo - Bogotá Normandía",Address:"Cr 71 No 54-48",PhotoUrl:"2021/04/08/6239837/apartamento-arriendo-cundinamarca-bogota-350440739_m.jpg",ClientName:"Sandra Ramirez",ClientId:"1155838",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6228971",Title:"Apartamento en Arriendo - Bogotá Santa Cecilia",Address:"calle 55 no.77-21",PhotoUrl:"2021/04/04/6228971/apartamento-arriendo-cundinamarca-bogota-349446435_m.jpg",ClientName:"Inmobiliaria New House SAS",ClientId:"29095",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6181543",Title:"Apartamento en Arriendo - Bogotá Santa Bárbara Occidental",Address:"cra 18 # 122",PhotoUrl:"2021/03/15/6181543/apartamento-arriendo-cundinamarca-bogota-349342403_m.jpg",ClientName:"Bibiana  Muñoz",ClientId:"409594",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6126626",Title:"Apartamento en Arriendo - Bogotá CIUDADELA COLSUBSIDIO",Address:"CARRERA 111A   88B- 51",PhotoUrl:"2021/02/24/6126626/apartamento-arriendo-cundinamarca-bogota-350439890_m.jpg",ClientName:"Mi Remate Seinco",ClientId:"29228",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6069469",Title:"Apartamento en Arriendo - Bogotá Chicó Reservado",Address:"Carrera 8A # 97-07",PhotoUrl:"2021/02/05/6069469/apartamento-arriendo-cundinamarca-bogota-350439434_m.jpg",ClientName:"RAFAEL DIAZ",ClientId:"2331429",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"5945000",Title:"Apartamento en Arriendo - Bogotá LA FELICIDAD",Address:"CARRERA 79   19- 20",PhotoUrl:"2020/12/10/5945000/apartamento-arriendo-cundinamarca-bogota-350440530_m.jpg",ClientName:"Organización Inmobiliaria Gestión y Proyectos SAS",ClientId:"249581",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6239818",Title:"Apartamento en Arriendo - Bogotá Pasadena",Address:"Cra 52 No 106-84",PhotoUrl:"2021/04/08/6239818/apartamento-arriendo-cundinamarca-bogota-350438671_m.jpg",ClientName:"Jenny Gonzalez",ClientId:"1971364",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6155865",Title:"Apartamento en Arriendo - Bogotá Chicó",Address:"Calle 93A 19 42",PhotoUrl:"2021/03/05/6155865/apartamento-arriendo-cundinamarca-bogota-350437711_m.jpg",ClientName:"CR MERCANTIL",ClientId:"2728226",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6155736",Title:"Apartamento en Arriendo - Bogotá San Patricio",Address:"Carrera 17 106 51",PhotoUrl:"2021/03/05/6155736/apartamento-arriendo-cundinamarca-bogota-350438055_m.jpg",ClientName:"CR MERCANTIL",ClientId:"2728226",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6090825",Title:"Apartamento en Arriendo - Bogotá CEDRO GOLF",Address:"CARRERA 7F   148- 30",PhotoUrl:"2021/02/12/6090825/apartamento-arriendo-cundinamarca-bogota-350441658_m.jpg",ClientName:"CFR Colombiana de Finca Raiz Ltda",ClientId:"28866",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6175376",Title:"Apartamento en Arriendo - Bogotá Chicó",Address:"Calle 93A 19 42",PhotoUrl:"2021/03/12/6175376/apartamento-arriendo-cundinamarca-bogota-350436941_m.jpg",ClientName:"CR MERCANTIL",ClientId:"2728226",OriginId:"23",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Professional"},{AdvertId:"6239781",Title:"Apartamento en Arriendo - Bogotá La Felicidad",Address:"carrera 77 19-35",PhotoUrl:"2021/04/08/6239781/apartamento-arriendo-cundinamarca-bogota-350438957_m.jpg",ClientName:"lioana peñs",ClientId:"3039548",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"},{AdvertId:"6239776",Title:"Apartamento en Arriendo - Bogotá La Florida",Address:"cerca al cai",PhotoUrl:"2021/04/08/6239776/apartamento-arriendo-cundinamarca-bogota-350436039_m.jpg",ClientName:"carolina León ",ClientId:"1238545",OriginId:"44",PromotionLogoURL:"",Category1:"Apartamento",TransactionId:"2",ContractType:"Particular"}],"info":""}][0];
-    var lstFacets = "";
+            $( document ).ready(function() {
+                cCategoryGroup = "1";
+            });
 
-    function Grid_OrderBy(orderby) {
-        trackingAlreadyCalled = false;
-        sfFind.Order = orderby;
-        sfFind.PageNumber = 1;
-        return Find(sfFind, null, "ORDER");
-    }
+            //variable global
+            var sfFind = Normalize({"AdvertCategory" : "0", "LocationType" : "0", "AdvertId" : "0", "AdvertWASId" : "0", "AdvertExternalId" : "", "ClientId" : "0", "TransactionId" : "2", "sTransactionsId" : "", "TransactionType" : "All", "Category1Id" : "8", "Category1IdList" : "8", "Category2Id" : "0", "Category3Id" : "0", "Location1Id" : "67", "Location1IdList" : "67", "Location2Id" : "3630001", "Location2IdList" : "3630001", "Location3Id" : "0", "Location3IdList" : "", "Location4Id" : "0", "Location4IdList" : "", "PriceFrom" : "0", "PriceTo" : "0", "NotInLocation4Id" : "", "SalaryMax" : "0", "SurfaceFrom" : "0", "SurfaceTo" : "0", "Area" : "0", "Rooms" : "0", "RoomsList" : "", "Baths" : "0", "BathsList" : "", "AgeId" : "0", "AgeIdList" : "", "NotInLocation3Id" : "", "ExtrasId" : "0", "ExtrasIdList" : "", "ContractType" : "All", "TopAdvert" : "0", "ProductCode" : "", "NumPhotos" : "0", "ShowPhotos" : "True", "ProductId" : "0", "Word" : "", "Order" : "GridDate desc", "Status" : "0", "OriginId" : "0", "GridDate" : "1/1/0001 12:00:00 AM", "ModifyDateTo" : "1/1/1900 12:00:00 AM", "ToBePostModerate" : "False", "FTISearch" : "False", "NotInAdvertsId" : "", "ParentLevel" : "-1", "GroupType" : "-1", "ClientParentLevel" : "-1", "NotInCategory1Id" : "0", "NotInCategory2Id" : "0", "AdvertIP" : "", "GroupName" : "", "Neighborhood" : "", "PriceTypeId" : "0", "StratumId" : "", "StratumIdList" : "", "TotalEnvironment" : "0", "TotalEnvironmentList" : "", "IsFree" : "-1", "InLocation" : "False", "Ranking" : "0", "ProyectStatus" : "0", "PageSize" : "30", "PageNumber" : "1"});
+            var viewMap = false;
+            sfFind.Category1Id = sfFind.Category1IdList;
+            sfFind.Rooms = sfFind.RoomsList;
+            sfFind.Baths = sfFind.BathsList;
+            sfFind.ExtrasId = sfFind.ExtrasIdList;
+            var idsPageSemanticText = ['/apartamento-en-arriendo/bogota/los_rosales-det-6135694.aspx','/apartamento-en-arriendo/bogota/nicolas_federman-det-6201092.aspx','/apartamento-en-arriendo/bogota/los_rosales-det-6027173.aspx','/apartamento-en-arriendo/bogota/quinta_paredes-det-6200902.aspx','/apartamento-en-arriendo/bogota/las_delicias_del_carmen-det-5940710.aspx','/apartamento-en-arriendo/bogota/kennedy_central-det-6214662.aspx','/apartamento-en-arriendo/bogota/niza-det-6224884.aspx','/apartamento-en-arriendo/bogota/cedro_golf-det-6245396.aspx','/apartamento-en-arriendo/bogota/las_margaritas-det-6240103.aspx','/apartamento-en-arriendo/bogota/pasadena-det-6241322.aspx','/apartamento-en-arriendo/bogota/bella_suiza-det-6169113.aspx','/apartamento-en-arriendo/bogota/nueva_autopista-det-6250991.aspx','/apartamento-en-arriendo/bogota/local_barrio_venecia_diagonal_sur-det-6246153.aspx','/apartamento-en-arriendo/bogota/santa_barbara_oriental-det-6250936.aspx','/apartamento-en-arriendo/bogota/bosa-det-6250932.aspx','/apartamento-en-arriendo/bogota/espanola-det-6250919.aspx','/apartamento-en-arriendo/bogota/cedritos-det-6250929.aspx','/apartamento-en-arriendo/bogota/san_luis_patios-det-6250922.aspx','/apartamento-en-arriendo/bogota/galerias-det-5704830.aspx','/apartamento-en-arriendo/bogota/chico_norte-det-6144144.aspx','/apartamento-en-arriendo/bogota/cedritos-det-5012908.aspx','/apartamento-en-arriendo/bogota/quiroga_central-det-6250884.aspx','/apartamento-en-arriendo/bogota/cedritos-det-5778552.aspx','/apartamento-en-arriendo/bogota/belmira-det-5780667.aspx','/apartamento-en-arriendo/bogota/castilla-det-5921292.aspx','/apartamento-en-arriendo/bogota/san_luis_patios-det-6216477.aspx','/apartamento-en-arriendo/bogota/castilla-det-6250874.aspx','/apartamento-en-arriendo/bogota/villas_granada-det-6161837.aspx','/apartamento-en-arriendo/bogota/santa_teresa-det-6236611.aspx','/apartamento-en-arriendo/bogota/mazuren-det-6241669.aspx','/apartamento-en-arriendo/bogota/chico_norte-det-6249715.aspx','/apartamento-en-arriendo/bogota/bonanza-det-6250851.aspx','/apartamento-en-arriendo/bogota/portales_del_norte-det-6206327.aspx','/apartamento-en-arriendo/bogota/santa_paula-det-6084936.aspx'];
+            var countAdverts = 22183;
+            var totalPages = 740;
 
-    //llamado carousel
-    $(document).ready(function () {
-        if (!toBoolean('False'))
-            return;
-
-        var isTag = window.xtsd != undefined;
-        var timeExecution = !isTag ? 400 : 0;
-        var maxTime = 10000;//Se define tiempo maximo de espera 
-        //se crea setInterval para solicionar problemas cuando la variable window.xtsd no acanza a definirse
-        var id = setInterval(function () {
-            if (window.xtsd != undefined || timeExecution >= maxTime) {
-                clearInterval(id);
-                loadCarousel("30|1||||2||8|||67|3630001|||||||||||||||||||1||category1 desc||||||||", "AV")
+            InitializeViewModelFilters();
+        
+            function ShowArrows()
+            {
+                if(trim($("#div_LastPage").html()) != ""){
+                    $("#div_LastPage").show();
+                }
+                else{
+                    $("#div_LastPage").hide();
+                }                    
+                if(trim($("#div_NextPage").html()) != ""){
+                    $("#div_NextPage").show();            
+                }
+                else{
+                    $("#div_NextPage").hide();
+                }
+                if(countAdverts == 0){
+                    $("#paginator_top").hide();
+                }
             }
-            if (isTag)
-                timeExecution += 200;
-        }, timeExecution);
-    });
+
+            function PaintSuperiorPaginator(lstData){
+                totalPages = Math.ceil(parseInt(lstData.info) / sfFind.PageSize);
+                sfFind.PageNumber = parseInt(sfFind.PageNumber);
+                if(totalPages > 0)
+                {
+                    $("#paginator_top").show();
+                    $("#span_counter").html(sfFind.PageNumber + " de " + totalPages);
+                    var firtsPage = GetFirtsPagePaginator();
+                    var lastPage = GetLastPagePaginator();
+                    var htmlNextPage = '';
+                    var htmlLastPage = '';
+                    if (sfFind.PageNumber > firtsPage)
+                    {
+                        htmlLastPage = '<a href="{Semantic}"  class="ico20 prev-page" onclick="return Grid_PageChanged(\'{PageNumber}\')" ></a>\
+                                        <a href="{Semantic}" title="Ir a la pagina Anterior" onclick="return Grid_PageChanged(\'{PageNumber}\')" >Anterior</a>';
+                        var pageObject1 = GetPageObject("Anterior", sfFind.PageNumber - 1);
+                        htmlLastPage = toHtml(pageObject1,htmlLastPage);
+                    }
+                    if (sfFind.PageNumber < lastPage)
+                    {
+                        htmlNextPage = '<a href="{Semantic}" title="Ir a la pagina Siguiente" onclick="return Grid_PageChanged(\'{PageNumber}\')" >Siguiente</a> \
+                                        <a href="{Semantic}" class="ico20 next-page" onclick="return Grid_PageChanged(\'{PageNumber}\')" ></a>';                
+                        var pageObject2 = GetPageObject("Siguiente", sfFind.PageNumber + 1);                
+                        htmlNextPage = toHtml(pageObject2,htmlNextPage);
+                    }
+                    $("#div_LastPage").html(htmlLastPage);
+                    $("#div_NextPage").html(htmlNextPage);
+                    ShowArrows();
+                }
+                else{
+                    $("#paginator_top").hide();
+                }
+            }
+            $(document).ready(function() {ShowArrows();});
+                       
+        

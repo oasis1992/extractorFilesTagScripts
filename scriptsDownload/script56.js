@@ -1,1 +1,2 @@
-function OLAPAdvertContact2(advId,originId,typeId){ WSStatistics.Contact(advId,typeId,40,'2021/04/08:14:57:44:691-062-20',originId);}
+function OlapSearchStats(cat1,loc1,loc2,loc3,loc4,trans){var type='5001';var src='40';var ck='2021/04/12:21:21:47:749-074-5';WSStatistics.SaveFilters(type,src,ck,cat1,loc1,loc2,loc3,loc4,trans);}
+OlapSearchStats('8','67','3630001','0','','2');
